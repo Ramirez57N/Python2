@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Python desde cero — Guía interactiva de fundamentos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+<script src="https://cdn.jsdelivr.net/npm/skulpt@1.2.0/dist/skulpt.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/skulpt@1.2.0/dist/skulpt-stdlib.js"></script>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-tag">Guía de estudio hecha por estudiantes, para estudiantes</div>
+    <h1>Python desde cero, explicado con nuestras propias palabras</h1>
+    <p class="lead">Esta guía junta lo esencial para empezar en Python: variables, tipos de datos, condicionales, bucles y, sobre todo, funciones — qué son, cómo se usan y por qué existen. Cada explicación está pensada para que otro estudiante la entienda sin depender de la documentación oficial.</p>
+    <div class="hero-diagram">
+      <div class="box">entrada</div>
+      <div class="arrow">→</div>
+      <div class="box machine">función</div>
+      <div class="arrow">→</div>
+      <div class="box">salida</div>
+    </div>
+  </div>
+</header>
+
+<nav class="tabs">
+  <div class="wrap">
+    <button class="tab-btn active" data-panel="intro">Bases del lenguaje</button>
+    <button class="tab-btn" data-panel="condicionales">Condicionales y bucles</button>
+    <button class="tab-btn" data-panel="funciones">Funciones</button>
+    <button class="tab-btn" data-panel="laboratorio">Laboratorio</button>
+    <button class="tab-btn" data-panel="editor">Escribe tu código</button>
+    <button class="tab-btn" data-panel="quiz">Autoevaluación</button>
+    <button class="tab-btn" data-panel="glosario">Glosario</button>
+  </div>
+</nav>
+
+<main class="wrap">
+
+  <!-- ================= INTRO: VARIABLES Y TIPOS ================= -->
+  <section class="panel active" id="intro">
+    <div class="kicker">01 — lo primero que hay que saber</div>
+    <h2>Variables y tipos de datos</h2>
+    <p class="lede">Antes de escribir cualquier programa, Python necesita un lugar donde guardar la información con la que va a trabajar. Ese lugar es la variable.</p>
+
+    <details class="exp" open>
+      <summary>¿Qué es una variable?</summary>
+      <div class="body">
+        <p>Una variable es simplemente un nombre que le ponemos a un valor para poder usarlo después. Es como una caja con una etiqueta: adentro guardas algo (un número, una palabra, una lista) y en la etiqueta escribes cómo se llama esa caja, para poder pedirla de nuevo más adelante.</p>
+        <pre>edad = 16
+nombre = "Camila"
+promedio = 4.3</pre>
+        <p>En Python no hay que avisar de qué tipo va a ser la caja: el lenguaje lo descubre solo, según lo que le pongas dentro.</p>
+      </div>
+    </details>
+
+    <details class="exp">
+      <summary>Los tipos de datos básicos</summary>
+      <div class="body">
+        <p>Cada valor que guardamos tiene una naturaleza distinta, y Python la clasifica en tipos:</p>
+        <div class="cards">
+          <div class="card">
+            <h3><code>int</code> — números enteros</h3>
+            <p>Números sin decimales, positivos o negativos. Sirven para contar cosas: edades, cantidades, puntajes.</p>
+            <pre>vidas = 3</pre>
+          </div>
+          <div class="card">
+            <h3><code>float</code> — números decimales</h3>
+            <p>Números con coma (o punto, en Python). Se usan cuando la precisión importa: precios, promedios, medidas.</p>
+            <pre>precio = 12.99</pre>
+          </div>
+          <div class="card">
+            <h3><code>str</code> — texto</h3>
+            <p>Cualquier cadena de caracteres, entre comillas. Sirve para nombres, mensajes, respuestas de un usuario.</p>
+            <pre>saludo = "Hola, mundo"</pre>
+          </div>
+          <div class="card">
+            <h3><code>bool</code> — verdadero o falso</h3>
+            <p>Solo puede valer <code>True</code> o <code>False</code>. Es la base de toda decisión que tome el programa.</p>
+            <pre>esta_aprobado = True</pre>
+          </div>
+        </div>
+      </div>
+    </details>
+
+    <details class="exp">
+      <summary>Operadores: cómo se combinan los valores</summary>
+      <div class="body">
+        <p>Los operadores son los símbolos que le dicen a Python qué hacer con los valores: sumarlos, compararlos, combinarlos.</p>
+        <div class="cards">
+          <div class="card">
+            <h3>Aritméticos</h3>
+            <p><code>+ - * /</code> funcionan como en matemáticas. <code>//</code> divide y descarta el resto, <code>%</code> devuelve solo el resto, y <code>**</code> eleva a una potencia.</p>
+            <pre>7 // 2   # 3
+7 % 2    # 1
+2 ** 3   # 8</pre>
+          </div>
+          <div class="card">
+            <h3>De comparación</h3>
+            <p><code>== != > < >= <=</code> comparan dos valores y siempre devuelven un <code>bool</code>.</p>
+            <pre>edad >= 18   # True o False</pre>
+          </div>
+        </div>
+      </div>
+    </details>
+  </section>
+
+  <!-- ================= CONDICIONALES Y BUCLES ================= -->
+  <section class="panel" id="condicionales">
+    <div class="kicker">02 — decisiones y repeticiones</div>
+    <h2>Condicionales y bucles</h2>
+    <p class="lede">Un programa que solo ejecuta líneas de arriba hacia abajo, sin decidir nada, es poco útil. Estas dos herramientas le dan a Python la capacidad de reaccionar y de repetir tareas.</p>
+
+    <div class="cards">
+      <div class="card">
+        <h3>if / elif / else — tomar decisiones</h3>
+        <p>Le dicen a Python: "si esta condición se cumple, haz esto; si no, prueba con esta otra; y si ninguna se cumple, haz esto último".</p>
+        <pre>if nota >= 4.5:
+    print("Aprobado")
+elif nota >= 3.0:
+    print("Necesita refuerzo")
+else:
+    print("Reprobado")</pre>
+        <div class="why"><strong>En nuestras palabras:</strong> es exactamente como decidir qué hacer según el clima — "si llueve, llevo paraguas; si no, salgo tranquilo". Python revisa la condición en orden y ejecuta solo el primer bloque que resulte verdadero.</div>
+      </div>
+
+      <div class="card">
+        <h3>for — repetir un número conocido de veces</h3>
+        <p>Recorre uno por uno los elementos de algo (una lista, un rango de números, las letras de una palabra) y repite el mismo bloque de código para cada uno.</p>
+        <pre>for numero in range(1, 4):
+    print(numero)
+# imprime 1, 2 y 3</pre>
+        <div class="why"><strong>En nuestras palabras:</strong> es como repartir un examen alumno por alumno — sabes exactamente cuántas veces vas a repetir la acción, porque sabes cuántos alumnos hay.</div>
+      </div>
+
+      <div class="card">
+        <h3>while — repetir mientras algo sea cierto</h3>
+        <p>Repite un bloque de código una y otra vez mientras la condición siga siendo verdadera. Se usa cuando no sabemos de antemano cuántas repeticiones harán falta.</p>
+        <pre>intentos = 0
+while intentos < 3:
+    print("Intento", intentos)
+    intentos = intentos + 1</pre>
+        <div class="why"><strong>En nuestras palabras:</strong> es como seguir tocando timbre hasta que alguien abra la puerta — no sabes cuántas veces vas a tocar, solo sabes cuándo parar.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FUNCIONES ================= -->
+  <section class="panel" id="funciones">
+    <div class="kicker">03 — el corazón de esta guía</div>
+    <h2>Funciones</h2>
+    <p class="lede">Una función es un bloque de código con nombre propio que recibe algo, hace un trabajo con eso, y (casi siempre) entrega un resultado. En nuestras palabras: es una pequeña máquina reutilizable. Le metes algo por un lado, ella lo procesa, y te devuelve algo por el otro — sin que tengas que reescribir el proceso cada vez.</p>
+
+    <h3 style="margin-top:6px;">Anatomía de una función propia</h3>
+    <div class="legend">
+      <span><span class="swatch" style="background:var(--mustard)"></span> palabra clave <code>def</code></span>
+      <span><span class="swatch" style="background:var(--sage)"></span> nombre de la función</span>
+      <span><span class="swatch" style="background:var(--clay)"></span> parámetros (las entradas)</span>
+      <span><span class="swatch" style="background:rgba(255,255,255,.35)"></span> resultado con <code>return</code></span>
+    </div>
+    <div class="anatomy">
+<span class="tag def">def</span> <span class="tag name">calcular_promedio</span>(<span class="tag params">notas</span>):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;suma = sum(notas)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag ret">return</span> suma / len(notas)
+    </div>
+    <p class="lede" style="margin-top:-14px;">Cuando llamamos <code>calcular_promedio([4.0, 3.5, 5.0])</code>, Python entra a ese bloque, hace el cálculo con esos valores concretos y nos devuelve un solo número: el promedio.</p>
+
+    <div class="cards" style="margin-top:8px;">
+      <div class="card">
+        <h3>Funciones incorporadas (built-in)</h3>
+        <p>Python ya trae funciones listas para usar, sin que nadie tenga que definirlas. Están siempre disponibles.</p>
+        <pre>len("Python")   # 6
+print("Hola")   # muestra "Hola"
+type(5)         # &lt;class 'int'&gt;
+max(3, 9, 1)    # 9</pre>
+        <div class="why"><strong>En nuestras palabras:</strong> son herramientas de fábrica — vienen incluidas con el lenguaje porque se usan tanto que no tendría sentido que cada quien las volviera a programar.</div>
+      </div>
+      <div class="card">
+        <h3>Funciones propias (definidas por nosotros)</h3>
+        <p>Cuando una tarea se repite en nuestro propio programa, la empaquetamos en una función con <code>def</code>, le damos un nombre y la reutilizamos cuantas veces haga falta.</p>
+        <pre>def es_par(numero):
+    return numero % 2 == 0
+
+es_par(8)   # True
+es_par(7)   # False</pre>
+        <div class="why"><strong>En nuestras palabras:</strong> es escribir nuestra propia herramienta a medida, para no repetir el mismo código varias veces en distintas partes del programa.</div>
+      </div>
+      <div class="card">
+        <h3>Parámetros vs. argumentos</h3>
+        <p>El parámetro es el nombre que aparece en la definición de la función (el "espacio en blanco" que espera un valor). El argumento es el valor real que le pasamos cuando la llamamos.</p>
+        <pre>def saludar(nombre):   # nombre = parámetro
+    print("Hola,", nombre)
+
+saludar("Luis")        # "Luis" = argumento</pre>
+      </div>
+      <div class="card">
+        <h3>¿Por qué usar <code>return</code>?</h3>
+        <p><code>return</code> hace que la función entregue un valor que se puede guardar o reutilizar en otra parte del programa. Sin él, la función puede hacer algo (como imprimir en pantalla), pero no deja nada disponible para usar después.</p>
+        <pre>def duplicar(numero):
+    return numero * 2
+
+resultado = duplicar(5)
+print(resultado)   # 10</pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= LABORATORIO (interactivo) ================= -->
+  <section class="panel" id="laboratorio">
+    <div class="kicker">04 — pruébalo tú mismo</div>
+    <h2>La máquina de funciones</h2>
+    <p class="lede">Elige una función incorporada, escribe una entrada y observa cómo Python la procesa paso a paso.</p>
+
+    <div class="machine-panel">
+      <div class="machine-controls">
+        <select id="fn-select">
+          <option value="len">len( )</option>
+          <option value="upper">.upper( )</option>
+          <option value="type">type( )</option>
+          <option value="reverse">reversed( )</option>
+          <option value="sum">sum( ) sobre números separados por coma</option>
+        </select>
+        <input type="text" id="fn-input" placeholder="Escribe una entrada, ej: hola" value="hola">
+        <button class="run" onclick="runMachine()">Ejecutar</button>
+      </div>
+
+      <div class="machine-flow">
+        <div class="flow-box">
+          <h4>Entrada</h4>
+          <div class="val" id="flow-input">"hola"</div>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-box machine-mid">
+          <h4>Función</h4>
+          <div class="val" id="flow-fn">len( )</div>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-box">
+          <h4>Salida</h4>
+          <div class="val" id="flow-output">4</div>
+        </div>
+      </div>
+
+      <div class="fn-explain" id="flow-explain">
+        <code>len("hola")</code> cuenta los caracteres de la cadena y devuelve un número entero: cuatro letras, resultado 4.
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= EDITOR: ESCRIBE TU CÓDIGO ================= -->
+  <section class="panel" id="editor">
+    <div class="kicker">05 — de la teoría a tu propio código</div>
+    <h2>Escribe tu código y ejecútalo</h2>
+    <p class="lede">Aquí puedes tomar un ejemplo ya resuelto, modificarlo o escribir tu propia función desde cero. El código se ejecuta de verdad, en el navegador — igual que si lo corrieras en tu computador.</p>
+
+    <div class="editor-panel">
+      <div class="example-picker">
+        <button onclick="loadExample('funcion')">Ejemplo: función propia</button>
+        <button onclick="loadExample('condicional')">Ejemplo: condicional</button>
+        <button onclick="loadExample('bucle')">Ejemplo: bucle</button>
+        <button onclick="loadExample('vacio')">Empezar en blanco</button>
+      </div>
+
+      <div class="editor-grid">
+        <textarea id="code-editor" spellcheck="false"></textarea>
+        <div class="editor-actions">
+          <button class="run" onclick="runCode()">Ejecutar código</button>
+          <span id="run-status"></span>
+        </div>
+        <div>
+          <div class="console-label">Consola</div>
+          <div class="console" id="console-output"><span class="placeholder">Aquí aparecerá el resultado cuando ejecutes tu código.</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= QUIZ ================= -->
+  <section class="panel" id="quiz">
+    <div class="kicker">05 — comprueba lo que aprendiste</div>
+    <h2>Autoevaluación rápida</h2>
+    <p class="lede">Cinco preguntas para revisar si los conceptos quedaron claros. Puedes repetirla las veces que quieras.</p>
+    <div id="quiz-container"></div>
+    <div id="quiz-score"></div>
+  </section>
+
+  <!-- ================= GLOSARIO ================= -->
+  <section class="panel" id="glosario">
+    <div class="kicker">06 — para consultar rápido</div>
+    <h2>Glosario en palabras simples</h2>
+    <p class="lede">Los mismos temas del menú de navegación del proyecto, cada uno con su explicación, un ejemplo de código y el resultado que produce.</p>
+
+    <div class="gloss-card">
+      <h3>1. <code>print()</code></h3>
+      <p><code>print()</code> sirve para mostrar información en la pantalla. Podemos utilizarlo para mostrar textos, números o resultados de operaciones.</p>
+      <div class="io-label">Ejemplo</div>
+      <pre class="code-block">print("Hola mundo")</pre>
+      <div class="io-label">Resultado</div>
+      <pre class="result-block">Hola mundo</pre>
+    </div>
+
+    <div class="gloss-card">
+      <h3>2. Variables</h3>
+      <p>Las variables sirven para guardar información dentro del programa. Una variable puede almacenar un nombre, una edad, un número, etc.</p>
+      <div class="io-label">Ejemplo</div>
+      <pre class="code-block">nombre = "Juan"
+edad = 17
+
+print(nombre)
+print(edad)</pre>
+      <div class="io-label">Resultado</div>
+      <pre class="result-block">Juan
+17</pre>
+    </div>
+
+    <div class="gloss-card">
+      <h3>3. <code>input()</code></h3>
+      <p><code>input()</code> permite que el programa reciba información escrita por el usuario.</p>
+      <div class="io-label">Ejemplo</div>
+      <pre class="code-block">nombre = input("Escribe tu nombre: ")
+print("Hola", nombre)</pre>
+      <div class="io-label">Resultado</div>
+      <pre class="result-block">Escribe tu nombre: Carlos
+Hola Carlos</pre>
+    </div>
+
+    <div class="gloss-card">
+      <h3>4. Operaciones</h3>
+      <p>Python permite realizar operaciones matemáticas como sumar, restar, multiplicar y dividir. Los principales operadores son:</p>
+      <p><code>+</code> → Suma&nbsp;&nbsp;·&nbsp;&nbsp;<code>-</code> → Resta&nbsp;&nbsp;·&nbsp;&nbsp;<code>*</code> → Multiplicación&nbsp;&nbsp;·&nbsp;&nbsp;<code>/</code> → División&nbsp;&nbsp;·&nbsp;&nbsp;<code>%</code> → Resto de una división</p>
+      <div class="io-label">Ejemplo</div>
+      <pre class="code-block">a = 10
+b = 5
+
+print(a + b)
+print(a - b)
+print(a * b)
+print(a / b)</pre>
+      <div class="io-label">Resultado</div>
+      <pre class="result-block">15
+5
+50
+2.0</pre>
+    </div>
+
+    <div class="gloss-card">
+      <h3>5. <code>int</code> y <code>float</code></h3>
+      <p><code>int</code> se utiliza para trabajar con números enteros, mientras que <code>float</code> se utiliza para números decimales.</p>
+      <div class="io-label">Ejemplo</div>
+      <pre class="code-block">edad = int("17")
+altura = float("1.75")
+
+print(edad)
+print(altura)</pre>
+      <div class="io-label">Resultado</div>
+      <pre class="result-block">17
+1.75</pre>
+      <p class="note">También son muy utilizados con <code>input()</code> para convertir lo que escribe el usuario en un número.</p>
+    </div>
+
+    <div class="gloss-card">
+      <h3>6. if / else</h3>
+      <p><code>if</code> y <code>else</code> permiten que el programa tome decisiones. <code>if</code> significa "si se cumple esta condición" y <code>else</code> significa "si no se cumple".</p>
+      <div class="io-label">Ejemplo</div>
+      <pre class="code-block">edad = 18
+
+if edad >= 18:
+    print("Eres mayor de edad")
+else:
+    print("Eres menor de edad")</pre>
+      <div class="io-label">Resultado</div>
+      <pre class="result-block">Eres mayor de edad</pre>
+    </div>
+
+    <div class="gloss-card">
+      <h3>7. if / elif / else</h3>
+      <p>Se utiliza cuando necesitamos comprobar varias condiciones diferentes: <code>if</code> comprueba la primera condición, <code>elif</code> comprueba otra condición si la anterior no se cumplió, y <code>else</code> se ejecuta si ninguna condición se cumple.</p>
+      <div class="io-label">Ejemplo</div>
+      <pre class="code-block">nota = 4
+
+if nota >= 4.5:
+    print("Excelente")
+elif nota >= 3:
+    print("Aprobaste")
+else:
+    print("Reprobaste")</pre>
+      <div class="io-label">Resultado</div>
+      <pre class="result-block">Aprobaste</pre>
+    </div>
+
+    <div class="gloss-card">
+      <h3>8. while</h3>
+      <p><code>while</code> permite repetir un bloque de código mientras una condición sea verdadera.</p>
+      <div class="io-label">Ejemplo</div>
+      <pre class="code-block">numero = 1
+
+while numero <= 5:
+    print(numero)
+    numero = numero + 1</pre>
+      <div class="io-label">Resultado</div>
+      <pre class="result-block">1
+2
+3
+4
+5</pre>
+      <p class="note">Es importante modificar la variable para que la condición eventualmente deje de cumplirse y el ciclo termine.</p>
+    </div>
+
+    <div class="gloss-card">
+      <h3>9. for</h3>
+      <p><code>for</code> permite repetir instrucciones una cantidad determinada de veces o recorrer elementos, como los de una lista.</p>
+      <div class="io-label">Ejemplo</div>
+      <pre class="code-block">for numero in range(5):
+    print(numero)</pre>
+      <div class="io-label">Resultado</div>
+      <pre class="result-block">0
+1
+2
+3
+4</pre>
+      <p class="note"><code>range(5)</code> genera los números desde <code>0</code> hasta <code>4</code>.</p>
+    </div>
+
+    <div class="gloss-card">
+      <h3>10. Listas</h3>
+      <p>Las listas permiten guardar varios datos dentro de una sola variable. Se escriben utilizando corchetes <code>[]</code>.</p>
+      <div class="io-label">Ejemplo</div>
+      <pre class="code-block">frutas = ["manzana", "pera", "uva"]
+
+print(frutas)</pre>
+      <div class="io-label">Resultado</div>
+      <pre class="result-block">['manzana', 'pera', 'uva']</pre>
+      <p class="note">También podemos acceder a un elemento específico utilizando su posición:</p>
+      <pre class="code-block">print(frutas[0])</pre>
+      <div class="io-label">Resultado</div>
+      <pre class="result-block">manzana</pre>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    Guía creada como recurso de consulta entre estudiantes — fundamentos de Python explicados en palabras propias, pensada para acompañar el aprendizaje de quien recién empieza.
+  </div>
+</footer>
+
+<script src="js/script.js"></script>
+
+</body>
+</html>
