@@ -1,13 +1,13 @@
   :root{
-    --paper: #FAF6EC;
-    --paper-2: #F1EADB;
-    --ink: #2B2A45;
-    --ink-soft: #5A5876;
-    --mustard: #E2A33D;
-    --sage: #6E8F71;
-    --clay: #C6603F;
-    --line: #DAD0B8;
-    --white: #FFFDF8;
+    --paper: #1B1930;
+    --paper-2: #272444;
+    --ink: #F3EFE3;
+    --ink-soft: #B9B4D6;
+    --mustard: #EAB35E;
+    --sage: #8FCB93;
+    --clay: #EB8563;
+    --line: #3B3865;
+    --white: #272444;
   }
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
