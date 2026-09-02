@@ -36,7 +36,12 @@
     border-bottom:2px solid var(--line);
     position:relative;
     overflow:hidden;
+    background:var(--ink);
   }
+  header.hero .hero-tag{color:var(--paper-2);}
+  header.hero h1{color:var(--paper);}
+  header.hero p.lead{color:var(--paper-2);}
+  header.hero .authors-box{border-color:rgba(255,255,255,.3);}
   .hero-tag{
     font-family:'IBM Plex Mono', monospace;
     font-size:.85rem;
