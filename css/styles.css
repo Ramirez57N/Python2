@@ -523,3 +523,15 @@
   @media (prefers-reduced-motion: reduce){
     html{scroll-behavior:auto;}
   }
+
+  .authors-box{
+    margin-top:16px;
+    width:100%;
+    max-width:520px;
+    text-align:left;
+    font-size:.85rem;
+    background:var(--ink);
+    color:var(--paper);
+    border-color:var(--ink);
+    border-style:solid;
+  }
