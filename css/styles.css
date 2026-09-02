@@ -535,3 +535,17 @@
     border-color:var(--ink);
     border-style:solid;
   }
+/* ---------- AJUSTES PARA TEMA OSCURO ---------- */
+.box.machine,
+.card pre,
+.anatomy,
+.authors-box,
+.gloss-card pre.code-block,
+.flow-box.machine-mid{
+  background:#14121F;
+  color:#F3EFE3;
+  border-color:#14121F;
+}
+#code-editor{
+  background:#14121F;
+}
